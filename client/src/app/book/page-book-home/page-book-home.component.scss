@@ -1,0 +1,78 @@
+.action-title {
+  font-size: 18px !important;
+  padding: 16px 8px;
+}
+
+.info-box {
+  height: 64px;
+}
+
+.info-box .icon i {
+  line-height: 64px;
+}
+
+.info-box .icon {
+  width: 64px;
+}
+
+.panel-title {
+  .btn:not(.btn-link):not(.btn-circle) {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+  }
+  .btn:not(.btn-link):not(.btn-circle) span {
+    top: 1px;
+  }
+  .btn:not(.btn-link):not(.btn-circle) i {
+    top: 1px;
+  }
+}
+
+.panel-group .panel+.panel {
+    margin-top: -1px;
+}
+
+.panel-details-heading {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.panel-details-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.panel-details-value {
+  font-size: 15px;
+  font-weight: 400;
+}
+.collapse-badge{
+  margin-left: 10px;
+  margin-top: -3px;
+}
+.collapse-checkbox {
+  margin-top: -5px;
+}
+.btn-collapse {
+  margin-top: -1px;
+  margin-right: 8px;
+}
+.list-title {
+  margin-top: 5px;
+  white-space: nowrap;
+}
+//.list-actions {
+//}
+.list-link {
+  display: flex !important;
+  justify-content: space-between;
+}
+.panel-booklist {
+  border-left: none;
+  border-right: none;
+}
+
+.pagination {
+  margin: 0px 0;
+}
+

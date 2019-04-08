@@ -1,0 +1,92 @@
+﻿@import '_theme-color-variables';
+
+.theme-blue {
+
+  .navbar {
+    background-color: $theme-white;
+  }
+
+  .navbar-brand {
+    color: $theme-blue;
+
+    &:hover {
+      color: $theme-blue-grey;
+    }
+
+    &:active {
+      color: $theme-blue-grey;
+    }
+
+    &:focus {
+      color: $theme-blue-grey;
+    }
+  }
+
+  .nav {
+    > li {
+      > a {
+        color: $theme-blue-grey;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .open {
+      > a {
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .bars {
+    color: $theme-blue-grey;
+  }
+
+  .sidebar {
+    .menu {
+      .list {
+        li.active {
+          background-color: transparent;
+
+          > :first-child {
+            i, span {
+              color: $theme-blue-grey;
+            }
+          }
+        }
+
+        .toggled {
+          background-color: transparent;
+        }
+
+        .ml-menu {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .legal {
+      background-color: $theme-white;
+
+      .copyright {
+        a {
+          color: $theme-blue-grey !important;
+        }
+      }
+    }
+  }
+}

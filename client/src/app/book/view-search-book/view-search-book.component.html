@@ -1,0 +1,107 @@
+<!-- SEARCH -->
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="header" style="padding: 12px 20px;">
+        <h2>
+          SEARCH
+          <small style="margin-top: 0;">Provide the preferred search filters</small>
+        </h2>
+      </div>
+      <div class="body">
+        <ngx-loading [show]="searchLoading"></ngx-loading>
+        <form class="form-horizontal"  (ngSubmit)="searchCompanies()">
+          <div class="row clearfix">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12 form-control-label">
+                <label for="itemId">Item ID</label>
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 col-sm-offset-right-1">
+                <div class="form-group">
+                  <div class="form-line">
+                    <input [(ngModel)]="itemId" name="itemId" type="text" id="itemId" class="form-control"
+                           [placeholder]="'Enter Item ID'">
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12 form-control-label">
+                <label for="itemName">Item Name</label>
+              </div>
+              <div
+                class="col-lg-8 col-md-8 col-sm-9 col-xs-12 col-lg-offset-right-1 col-md-offset-right-1 col-sm-offset-right-1">
+                <div class="form-group">
+                  <div class="form-line">
+                    <input [(ngModel)]="itemName" name="itemName" type="text" id="itemName" class="form-control"
+                           [placeholder]="'Enter Item Name'">
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <!--<div class="row">-->
+              <!--<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12 form-control-label">-->
+                <!--<label for="industry">Category</label>-->
+              <!--</div>-->
+              <!--<div-->
+                <!--class="ol-lg-8 col-md-8 col-sm-9 col-xs-12 col-sm-offset-right-1 p-l-0 p-r-30 custom-xs">-->
+                <!--<select [(ngModel)]="selectedIndustry" name="industry" id="industry" class="form-control show-tick">-->
+                  <!--<option [ngValue]="'-1'" selected="selected">- ANY -</option>-->
+                  <!--<option *ngFor="let industry of industryList" [value]="industry.industryId">{{industry.industryName}}</option>-->
+                <!--</select>-->
+              <!--</div>-->
+              <!--</div>-->
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="col-lg-4 col-md-4 col-sm-3 col-xs-4 form-control-label" style="padding-left:0; margin-bottom: 5px;" *ngIf="showAvailable || showBorrowed || showPending || showModified || showRejected">
+                <label>Status :</label>
+              </div>
+              <div *ngIf="showAvailable" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 search-check-col col-lg-offset-3 col-md-offset-3 col-xs-offset-3 pull-right" style="margin-bottom: 0px;">
+                <label>
+                  <input [(ngModel)]="availableSelected" [disabled]="true" type="checkbox" name="availableSelected">
+                  <span class="box search-check">AVAILABLE</span>
+                </label>
+              </div>
+              <div *ngIf="showBorrowed" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 search-check-col col-lg-offset-3 col-md-offset-3 col-xs-offset-3 pull-right" style="margin-bottom: 0px;">
+                <label>
+                  <input [(ngModel)]="borrowedSelected" [disabled]="true" type="checkbox" name="borrowedSelected">
+                  <span class="box search-check">BORROWED</span>
+                </label>
+              </div>
+              <!--<div *ngIf="showPending" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 search-check-col col-lg-offset-3 col-md-offset-3 col-xs-offset-3 pull-right" style="margin-bottom: 0px;">-->
+                <!--<label>-->
+                  <!--<input [(ngModel)]="pendingApprovalSelected" type="checkbox" name="pendingApprovalSelected">-->
+                  <!--<span class="box search-check">PENDING_APPROVAL</span>-->
+                <!--</label>-->
+              <!--</div>-->
+              <!--<div *ngIf="showModified" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 search-check-col col-lg-offset-3 col-md-offset-3 col-xs-offset-3 pull-right" style="margin-bottom: 0px;">-->
+                <!--<label>-->
+                  <!--<input [(ngModel)]="modifiedSelected" type="checkbox" name="modifiedSelected">-->
+                  <!--<span class="box search-check">MODIFIED</span>-->
+                <!--</label>-->
+              <!--</div>-->
+              <!--<div *ngIf="showRejected" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 search-check-col col-lg-offset-3 col-md-offset-3 col-xs-offset-3 pull-right" style="margin-bottom: 0px;">-->
+                <!--<label>-->
+                  <!--<input [(ngModel)]="rejectedSelected" type="checkbox" name="rejectedSelected">-->
+                  <!--<span class="box search-check">REJECTED</span>-->
+                <!--</label>-->
+              <!--</div>-->
+
+            </div>
+            <div
+              class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-xs2">
+              <button type="submit" class="btn-search btn bg-blue-grey waves-effect pull-right">
+                <i class="material-icons">search</i>
+                <span>SEARCH</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- #END# SEARCH -->

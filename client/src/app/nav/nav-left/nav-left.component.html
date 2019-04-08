@@ -1,0 +1,54 @@
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar" (window:resize)="onResize($event)">
+  <!-- User Info -->
+  <div class="user-info">
+    <div class="image">
+      <img src="assets/images/favicon.ico" width="48" height="48" alt="User"/>
+    </div>
+    <div class="info-container">
+      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Westminster Library</div>
+      <div class="email">Manage Your Books Online</div>
+    </div>
+  </div>
+  <!-- #User Info -->
+  <!-- Menu -->
+  <div class="menu">
+    <ul class="list">
+      <!--<li class="header">MAIN NAVIGATION</li>-->
+      <li *ngFor="let navigation of navigationItems" [routerLinkActive]="['active']">
+        <a [routerLink]="[navigation?.routerLink]" [class]="(navigation?.childNodes?.length > 0) ? 'menu-toggle' : ''">
+          <i class="material-icons">{{navigation?.icon}}</i>
+          <span>{{navigation?.name}}</span>
+        </a>
+        <ul *ngIf="navigation.childNodes?.length > 0" class="ml-menu">
+          <li *ngFor="let child of navigation?.childNodes" [routerLinkActive]="['sub-active']">
+            <a [routerLink]="[child?.routerLink]" [class]="(child.childNodes) ? 'menu-toggle' : ''">
+              <i class="material-icons child-icon">{{child?.icon}}</i>
+              <span>{{child?.name}}</span>
+            </a>
+            <ul *ngIf="child.childNodes?.length > 0" class="ml-menu">
+              <li *ngFor="let subChild of child.childNodes">
+                <a [routerLink]="[subChild?.routerLink]">
+                  {{subChild.name}}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- #Menu -->
+
+  <!-- Footer -->
+  <div class="legal">
+    <div class="copyright">
+      UoW
+    </div>
+    <div class="version">
+      <b>Version: </b> 1.0
+    </div>
+  </div>
+  <!-- #Footer -->
+</aside>
+<!-- #END# Left Sidebar -->

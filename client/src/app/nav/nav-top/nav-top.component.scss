@@ -1,0 +1,35 @@
+ul {
+  list-style: none;
+}
+
+.navbar-brand-text {
+  display: inline-flex;
+  position: absolute;
+  top: 27px;
+  left: 105px;
+}
+
+@media (min-width: 1187px) {
+  .navbar-brand-text {
+  left: 325px;
+}
+}
+
+.menu-lang {
+  text-align: center;
+}
+
+.text-logo {
+  height: 35px;
+  margin-left: 10px;
+}
+
+.navbar-brand {
+  padding: 9px;
+}
+
+.container-fluid {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  //box-shadow: 2px 1px 5px #264b618f;
+  //box-shadow: 2px 1px 5px rgb(83, 151, 255);
+}

@@ -1,0 +1,39 @@
+.search-check {
+  margin-left: 15px;
+}
+
+.search-check-col {
+  margin-left: 10px;
+}
+
+.btn-search {
+  width: 120px;
+  margin-right: 15px;
+}
+
+@media (max-width: 767px) {
+  .form-control-label {
+    text-align: left;
+    margin-bottom: 0px !important;
+  }
+  .form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: 0px;
+  }
+  .btn-group {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .custom-xs {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .custom-xs2 {
+    margin-top: 10px;
+    margin-bottom: 5px !important;
+  }
+  .btn-search {
+    width: 100%;
+    margin-right: 0;
+  }
+}

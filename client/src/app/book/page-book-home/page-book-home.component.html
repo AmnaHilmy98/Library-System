@@ -1,0 +1,54 @@
+<!-- ACTIONS -->
+<div class="row clearfix">
+
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+    <div class="info-box-4 hover-expand-effect" [routerLink]="['/main/book/add']">
+      <div class="icon">
+        <i class="material-icons col-blue">add</i>
+      </div>
+      <div class="content">
+        <div class="number action-head" style="margin-top: 8px; font-size: 22px;">
+          ADD
+        </div>
+        <div class="text" style="margin-top: -8px;">ITEM</div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">-->
+    <!--<div class="info-box-4 hover-expand-effect" [routerLink]="['/main/book/return']">-->
+      <!--<div class="icon">-->
+        <!--<i class="material-icons col-green">check</i>-->
+      <!--</div>-->
+      <!--<div class="content">-->
+        <!--<div class="number action-head" style="margin-top: 8px; font-size: 22px;">-->
+          <!--RETURN-->
+        <!--</div>-->
+        <!--<div class="text" style="margin-top: -8px;">ITEM</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+</div>
+<!-- #END# ACTIONS -->
+
+<!-- Search Book -->
+<app-view-search-book
+  (searchEvent)="searchBook($event)"
+  [showAvailable]="true"
+  [showBorrowed]="true">
+</app-view-search-book>
+<!-- END - Search Book -->
+
+
+<!-- #START# - Book list -->
+<app-view-book-list
+  (listRefreshEvent)="refreshList($event)"
+  [showBulkSelect]="false"
+  [listLoading]="listLoading"
+  [bookList]="bookList"
+  [offset]="offset"
+  [limit]="limit"
+  [showIcons]="true">
+</app-view-book-list>
+<!-- #END# - Book list -->

@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the computer list
+GET     /                           controllers.HomeController.index()
+
+GET     /books                      controllers.BookController.getAllBooks(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET     /books/search               controllers.BookController.searchBooks(id: String ?= null, name: String ?= null)
+POST    /books                      controllers.BookController.saveBook()
+GET     /books/:id                  controllers.BookController.getById(id:Long)
+
+GET     /books/lending/:id          controllers.BookController.getLending(id:Long)
+GET     /books/borrow/:id           controllers.BookController.borrowBook(id:Long, r: String ?= null)
+GET     /books/return/:id           controllers.BookController.returnBook(id:Long)
+GET     /books/delete/:id           controllers.BookController.deleteBook(id:Long)
+
+GET     /notifications              controllers.NotificationController.getNotifications()
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+

@@ -1,0 +1,11 @@
+{
+  "/api-backoffice": {
+    "target": "http://localhost:8080/api-backoffice",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api-backoffice": ""
+    },
+    "changeOrigin": true
+  }
+}

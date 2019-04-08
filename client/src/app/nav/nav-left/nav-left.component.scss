@@ -1,0 +1,44 @@
+#leftsidebar {
+  .header {
+    background-color: transparent;
+    color: #e0f3ff;
+  }
+
+  .menu {
+    background: linear-gradient(to bottom, #30303e, #476271);
+    //background: linear-gradient(to bottom, #0220ad, #18a0e6);
+    .list a {
+      color: #cceaff;
+      span {
+        color: #cceaff;
+      }
+    }
+    .list a:hover {
+      background: #30303e;
+    }
+    li.active {
+      background-color: #324b5d;
+    }
+    li.sub-active {
+      background-color: #37556b;
+    }
+    .child-icon {
+      font-size: 20px;
+      margin-top: 2px;
+    }
+  }
+}
+
+.legal {
+  border-top: 1px solid #324958;
+  color: #cceaff;
+  background-color: #425766;
+}
+
+.user-info {
+  border-bottom: 1px solid #30303e;
+  text-shadow: 1px 1px 10px #000;
+  .image img {
+    border-radius: 0;
+  }
+}

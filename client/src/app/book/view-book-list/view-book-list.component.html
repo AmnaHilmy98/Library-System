@@ -1,0 +1,210 @@
+<!-- Book List -->
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <ngx-loading [show]="listLoading"></ngx-loading>
+      <div class="header">
+        <div>
+          <div class="checkbox collapse-checkbox" style="display: inline; margin-right: 5px;"
+               (click)="stopPropagation($event);">
+            <label *ngIf="showBulkSelect">
+              <input [(ngModel)]="isSelectAll" (change)="selectAllChange()" type="checkbox"
+                     data-ng-model="example.check">
+              <span class="box"></span>
+            </label>
+          </div>
+          <span style="font-size: 15px;" *ngIf="!showBulkSelect">ITEM LIST</span>
+          <span style="font-size: 15px;" *ngIf="showBulkSelect"><b>{{selectedCount}}</b> SELECTED</span>
+          <button class="btn bg-danger waves-effect pull-right m-r-5" [disabled]="selectedBookList.length <= 0" (click)="bulkRejectBook()" *ngIf="showBulkSelect" style="margin-top: -5px;">
+            <i class="material-icons">clear</i>
+            <span>REJECT</span>
+          </button>
+          <button class="btn bg-success waves-effect pull-right m-r-15" [disabled]="selectedBookList.length <= 0" (click)="bulkApproveBook()" *ngIf="showBulkSelect" style="margin-top: -5px;">
+            <i class="material-icons">check</i>
+            <span>APPROVE</span>
+          </button>
+        </div>
+      </div>
+      <div class="body" style="padding: 0px; margin-top: -1px;">
+        <div class="row clearfix">
+          <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12" style="margin-bottom: 0;">
+            <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
+
+              <h5 style="text-align: center;" *ngIf="!bookList || (bookList && !(bookList.length > 0))">No Results found for speciied filters</h5>
+              <div class="panel panel-default panel-booklist" *ngFor="let book of bookList; let i = index;">
+                <div class="panel-heading clearfix" role="tab" [id]="'heading_'+ i">
+                  <h4 class="panel-title">
+                    <a class="collapsed list-link" role="button" data-toggle="collapse" data-parent="#accordion_1"
+                       [href]="'#collapse_' + i" aria-expanded="false"
+                       [attr.aria-controls]="'collapse_'+ i" style="padding: 8px 15px;"
+                       [style.borderLeft]="book?.selected ? '3px solid #2196f3' : '3px solid transparent'">
+
+                      <div class="list-title">
+
+                        <i *ngIf="showIcons && book?.category === 'book'" class="material-icons list-icon">book</i>
+                        <i *ngIf="showIcons && book?.category === 'dvd'" class="material-icons list-icon">album</i>
+                        <div style="display: inline; line-height: 25px;">#{{i+1}} {{book?.name}}</div>
+
+                        <span *ngIf="book?.status == '1'" class="badge collapse-badge bg-green">AVAILABLE</span>
+                        <span *ngIf="book?.status == '2'" class="badge collapse-badge bg-warn">BORROWED</span>
+                        <span *ngIf="book?.status == '8'" class="badge collapse-badge bg-danger">DESTROYED</span>
+                        <span *ngIf="book?.status == '9'" class="badge collapse-badge bg-blue-grey">REMOVED</span>
+                      </div>
+
+                      <div class="list-actions align-right">
+                        <div
+                             (click)="stopPropagation($event);preventDefault($event); deleteBook(book)"
+                             class="btn btn-default waves-effect btn-collapse fg-danger"
+                             style="margin-right: 8px;">
+                          <i class="material-icons">delete</i>
+                          <span>DELETE</span>
+                        </div>
+                        <div *ngIf="book?.status == '1'"
+                             (click)="stopPropagation($event);preventDefault($event); borrowBook(book)"
+                             class="btn btn-default waves-effect btn-collapse fg-warn"
+                             style="margin-right: 8px;">
+                          <i class="material-icons">call_made</i>
+                          <span>BORROW</span>
+                        </div>
+                        <div *ngIf="book?.status == '2'"
+                             (click)="stopPropagation($event);preventDefault($event); returnBook(book)"
+                             class="btn btn-default waves-effect btn-collapse fg-success"
+                             style="margin-right: 8px;">
+                          <i class="material-icons">call_received</i>
+                          <span>RETURN</span>
+                        </div>
+                        <div
+                             (click)="stopPropagation($event);preventDefault($event); historyBook(book)"
+                             class="btn btn-default waves-effect btn-collapse fg-info"
+                             style="margin-right: 8px;">
+                          <i class="material-icons">history</i>
+                          <span>LENDING HISTORY</span>
+                        </div>
+                        <!--<div (click)="viewBook(book);" class="btn btn-default waves-effect btn-collapse" style="margin-right: 8px;">-->
+                          <!--<i class="material-icons">list</i>-->
+                          <!--<span>VIEW</span>-->
+                        <!--</div>-->
+                      </div>
+                    </a>
+                  </h4>
+                </div>
+                <div [id]="'collapse_'+ i" class="panel-collapse collapse" role="tabpanel"
+                     [attr.aria-labelledby]="'heading_' + i">
+                  <div class="panel-body">
+                    <!--<h5 class="panel-details-heading">Details</h5>-->
+
+                    <div class="row">
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Item ID</b>
+                        <div>
+                          {{book?.id}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Item Name</b>
+                        <div>
+                          {{book?.name}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Category</b>
+                        <div>
+                          {{book?.category}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Author</b>
+                        <div>
+                          {{book?.author}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Genre</b>
+                        <div>
+                          {{book?.genre}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+                        <b>Status</b>
+                        <div *ngIf="book?.status === 1">
+                          Available
+                        </div>
+                        <div *ngIf="book?.status === 2">
+                          Borrowed
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" *ngIf="book?.status === 2"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5" *ngIf="book?.status === 2">
+                        <b>Next Availability</b>
+                        <div>
+                          {{getAvailability(book)}}
+                        </div>
+                      </div>
+
+                      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" *ngIf="book?.lastLended && book?.status !== 2"></div>
+                      <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5" *ngIf="book?.lastLended && book?.status !== 2">
+                        <b>Last Lend Date</b>
+                        <div>
+                          {{getDate(book?.lastLended)}}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!--<div class="row">-->
+                      <!--<button type="button" class="btn btn-info waves-effect pull-right"-->
+                              <!--[routerLink]="['/main/book/view']" [queryParams]="{ bookId: book?.email}"-->
+                              <!--queryParamsHandling="merge"-->
+                              <!--style="margin-right: 15px;">-->
+                        <!--<i class="material-icons">info</i>-->
+                        <!--<span>DETAILS</span>-->
+                      <!--</button>-->
+                    <!--</div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <nav>
+              <ul class="pagination" style="width: 100%; margin-bottom: 5px;">
+                <li class="disabled">
+                  <a>
+                    <i class="material-icons">chevron_left</i>
+                  </a>
+                </li>
+                <li class="active"><a>1</a></li>
+                <li><a class="waves-effect">2</a></li>
+                <li><a class="waves-effect">3</a></li>
+                <li><a class="waves-effect">4</a></li>
+                <li><a class="waves-effect">5</a></li>
+                <li>
+                  <a class="waves-effect">
+                    <i class="material-icons">chevron_right</i>
+                  </a>
+                </li>
+                <li class="pull-right" style="margin-right: 20px;margin-top: 5px;">
+                  0 - 10 of 200 results
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- #END# Book List -->

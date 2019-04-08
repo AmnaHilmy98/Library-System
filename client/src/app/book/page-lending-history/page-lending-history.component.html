@@ -1,0 +1,62 @@
+<div class="row">
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <ngx-loading [show]="historyLoading"></ngx-loading>
+      <div class="header" style="padding: 12px 20px;">
+        LENDING HISTORY - {{ bookName || 'Book Name'}}
+      </div>
+      <div class="body log-header" *ngIf="activities.length > 0">
+        <div class="row clearfix log-row">
+         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            #
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            Reader
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            Borrow Date
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            Return Date
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            Late Payments
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0 font-bold">
+            Status
+          </div>
+        </div>
+      </div>
+      <div class="body log-body clearfix" style="padding: 15px;">
+        <div *ngIf="activities.length === 0"
+             class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-0 padding-right-0 font-bold"
+             style="font-size: 13px; text-align: center;">
+          No History Available
+        </div>
+        <div class="row clearfix log-row" *ngFor="let activity of activities">
+
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 margin-bottom-0 padding-right-0">
+            {{activity?.id}}
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 margin-bottom-0 padding-right-0">
+            {{activity?.reader}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0">
+            {{getDate(activity?.borrowDate)}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0">
+            {{getDate(activity?.returnDate)}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0">
+            {{activity?.amount}}
+          </div>
+           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 margin-bottom-0 padding-right-0">
+            {{(activity?.status == 1) ? 'RETURNED' : 'BORROWED' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

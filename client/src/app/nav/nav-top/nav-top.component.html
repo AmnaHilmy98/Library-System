@@ -1,0 +1,54 @@
+<!-- Top Bar -->
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+         data-target="#navbar-collapse" aria-expanded="false"></a>
+      <a class="bars"></a>
+      <a class="navbar-brand" [routerLink]="['/main/dashboard']">
+
+        <img src="assets/images/favicon.ico" alt="iBank" class="text-logo"/>
+        <div class="navbar-brand-text">
+          Westminster Library System
+        </div>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+        <!-- Notifications -->
+        <li class="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="material-icons">notifications</i>
+            <span class="label-count">{{notifications?.length || 0}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="header">NOTIFICATIONS</li>
+            <li class="body">
+              <ul class="menu">
+                <li *ngFor="let notification of notifications; let i= index;" style="max-height: 80px; cursor: pointer;">
+                  <!--<a href="javascript:void(0);">-->
+                    <div [ngClass]="getNotifClass(notification)" style="margin: 22px 12px;">
+                      <i class="material-icons">{{notification?.icon}}</i>
+                    </div>
+                    <div class="menu-info" style="top: -70px;left: 60px; overflow: hidden;">
+                      <h4>{{notification?.title}}</h4>
+                      <p style="width: calc(100% - 60px);">
+                        {{notification?.body}}
+                      </p>
+                    </div>
+                  <!--</a>-->
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- #END# Notifications -->
+
+        <!--<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>-->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- #Top Bar -->

@@ -1,0 +1,148 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/variables";
+
+@media (min-width: 1187px) {
+  .navbar > .container-fluid {
+    margin-left: 255px;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .theme-white .navbar {
+    background-color: transparent;
+  }
+
+  .navbar {
+    box-shadow: none;
+    width: inherit;
+  }
+
+  .sidebar {
+    top: 0px;
+    height: 100vh;
+  }
+}
+
+/* Override CSS */
+.form-control {
+  border: 1px solid #ddd;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.checkbox label {
+  padding-left: 24px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + .box:before,
+input[type="checkbox"] + .box:after {
+  transition: all 0.3s;
+}
+
+input[type="checkbox"] + .box:after {
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  margin-top: -5px;
+  margin-left: -4px;
+  display: inline-block;
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #999;
+  border-radius: 2px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+input[type="checkbox"]:checked + .box:after {
+  background-color: #2196f3;
+  border-color: #2196f3;
+}
+
+input[type="checkbox"]:checked + .box:before {
+  transform: rotate(45deg);
+  position: absolute;
+  left: 7px;
+  top: 0px;
+  width: 6px;
+  height: 13px;
+  border-width: 2px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-color: #fff;
+  content: '';
+  z-index: 2;
+}
+
+.switch label .lever {
+  height: 22px;
+  background-color: #c1c1c1;
+}
+
+.switch label .lever:after {
+  width: 20px;
+  height: 20px;
+  left: 1px;
+  top: 1px;
+  box-shadow: none;
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+  left: 18px;
+}
+
+.backdrop {
+  z-index: 8 !important;
+}
+
+.card, .info-box, .info-box-2, .info-box-3, .info-box-4 {
+  border-radius: 5px;
+}
+
+.info-box-4 {
+  cursor: pointer;
+}
+
+// sweet alert override
+.swal2-popup {
+  font-size: 1.2rem !important;
+  .swal2-styled.swal2-confirm {
+    background-color: $theme-color !important;
+  }
+}
+
+/* NgxSelect Override CSS */
+.ng-select .ng-select-container {
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ng-select-opened {
+  border-bottom: 2px solid #1f91f3 !important;
+  transition: 0.25s ease-in;
+}
+
+.ng-select-error {
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  border-bottom: 2px solid #F44336;
+  transition: 0.25s ease-in;
+}
+
+.ng-select-focused {
+  border: none;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
